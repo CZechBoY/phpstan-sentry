@@ -2,7 +2,7 @@
 
 namespace PHPStan\Reflection\Sentry;
 
-class SentryAwareClassReflectionExtensionTest extends \PHPUnit_Framework_TestCase
+class SentryAwareClassReflectionExtensionTest extends \PHPUnit\Framework\TestCase
 {
 
 	public function testHasMethod()

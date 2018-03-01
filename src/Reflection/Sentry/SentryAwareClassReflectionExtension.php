@@ -34,7 +34,7 @@ class SentryAwareClassReflectionExtension implements MethodsClassReflectionExten
 		$this->phpClassReflectionExtension = $phpClassReflectionExtension;
 	}
 
-	public function setBroker(Broker $broker)
+	public function setBroker(Broker $broker): void
 	{
 		$this->broker = $broker;
 	}

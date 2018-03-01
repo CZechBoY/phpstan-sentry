@@ -7,7 +7,7 @@ class SentryAwareClassReflectionExtensionTest extends \PHPUnit\Framework\TestCas
 
 	public function testHasMethod()
 	{
-		$this->markTestIncomplete();
+		self::markTestIncomplete();
 	}
 
 }

@@ -31,7 +31,7 @@ class SentryMethodReflection implements MethodReflection
 		ClassReflection $declaringClass,
 		Visibility $visibility,
 		Type $type,
-		bool $setterParameterNullability = null
+		?bool $setterParameterNullability
 	)
 	{
 		$this->name = $name;

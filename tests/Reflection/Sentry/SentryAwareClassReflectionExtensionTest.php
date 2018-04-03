@@ -5,7 +5,7 @@ namespace PHPStan\Reflection\Sentry;
 class SentryAwareClassReflectionExtensionTest extends \PHPUnit\Framework\TestCase
 {
 
-	public function testHasMethod()
+	public function testHasMethod(): void
 	{
 		self::markTestIncomplete();
 	}

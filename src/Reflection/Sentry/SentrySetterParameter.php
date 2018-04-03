@@ -3,6 +3,7 @@
 namespace PHPStan\Reflection\Sentry;
 
 use PHPStan\Reflection\ParameterReflection;
+use PHPStan\Reflection\PassedByReference;
 use PHPStan\Type\Type;
 
 class SentrySetterParameter implements ParameterReflection
@@ -31,9 +32,9 @@ class SentrySetterParameter implements ParameterReflection
 		return $this->type;
 	}
 
-	public function isPassedByReference(): bool
+	public function passedByReference(): PassedByReference
 	{
-		return false;
+		return PassedByReference::createNo();
 	}
 
 	public function isVariadic(): bool

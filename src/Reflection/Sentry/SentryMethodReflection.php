@@ -3,6 +3,7 @@
 namespace PHPStan\Reflection\Sentry;
 
 use Consistence\Sentry\Metadata\Visibility;
+use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\Type;
@@ -51,7 +52,7 @@ class SentryMethodReflection implements MethodReflection
 		return $this->declaringClass;
 	}
 
-	public function getPrototype(): MethodReflection
+	public function getPrototype(): ClassMemberReflection
 	{
 		return $this;
 	}

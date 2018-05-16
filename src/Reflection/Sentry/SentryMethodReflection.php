@@ -5,6 +5,7 @@ namespace PHPStan\Reflection\Sentry;
 use Consistence\Sentry\Metadata\Visibility;
 use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ClassReflection;
+use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\Type;
 use PHPStan\Type\VoidType;
@@ -63,20 +64,17 @@ class SentryMethodReflection implements MethodReflection
 	}
 
 	/**
-	 * @return \PHPStan\Reflection\ParameterReflection[]
+	 * @return \PHPStan\Reflection\ParametersAcceptor[]
 	 */
-	public function getParameters(): array
+	public function getVariants(): array
 	{
-		if ($this->setterParameterNullability === null) {
-			return [];
-		}
-
-		return [new SentrySetterParameter($this->type)];
-	}
-
-	public function isVariadic(): bool
-	{
-		return false;
+		return [
+			new FunctionVariant(
+				$this->setterParameterNullability === null ? [] : [new SentrySetterParameter($this->type)],
+				false,
+				$this->setterParameterNullability === null ? $this->type : new VoidType()
+			),
+		];
 	}
 
 	public function isPrivate(): bool
@@ -87,15 +85,6 @@ class SentryMethodReflection implements MethodReflection
 	public function isPublic(): bool
 	{
 		return $this->visibility->equals(Visibility::get(Visibility::VISIBILITY_PUBLIC));
-	}
-
-	public function getReturnType(): Type
-	{
-		if ($this->setterParameterNullability === null) {
-			return $this->type;
-		}
-
-		return new VoidType();
 	}
 
 }
